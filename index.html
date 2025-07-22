@@ -1,65 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>TV Colombiana en Vivo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Canales de Colombia - IPTV</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
+      background-color: #121212;
+      color: white;
       text-align: center;
       padding: 20px;
     }
-    video {
-      width: 100%;
-      max-width: 700px;
-      border: 4px solid #0f0;
-      border-radius: 12px;
+    h1 {
+      color: #00ff99;
     }
-    .botones {
-      margin-top: 20px;
+    .canal {
+      margin: 10px;
     }
-    button {
-      padding: 10px;
-      margin: 5px;
-      font-size: 16px;
-      border: none;
+    a.boton {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      color: white;
+      background-color: #1e90ff;
+      text-decoration: none;
       border-radius: 8px;
-      cursor: pointer;
-      background-color: #444;
-      color: #fff;
+      transition: background 0.3s;
     }
-    button:hover {
-      background-color: #0f0;
-      color: #000;
+    a.boton:hover {
+      background-color: #0074cc;
     }
   </style>
 </head>
 <body>
-  <h1>📺 Canales Colombianos en Vivo</h1>
-  <video id="tv" controls autoplay>
-    <source id="tvSource" src="https://stream.telecaribe.com.co/live/telecaribe.m3u8" type="application/x-mpegURL">
-    Tu navegador no soporta reproducción de video en vivo.
-  </video>
+  <h1>📺 Canales Colombianos IPTV</h1>
 
-  <div class="botones">
-    <button onclick="cambiarCanal('https://live.televisionlibre.net/stream/canal1.m3u8')">Canal 1</button>
-    <button onclick="cambiarCanal('https://stream.telecaribe.com.co/live/telecaribe.m3u8')">Telecaribe</button>
-    <button onclick="cambiarCanal('https://stream.canaltro.com/live/CanalTRO.m3u8')">Canal TRO</button>
-    <button onclick="cambiarCanal('https://stream.teleantioquia.com.co/live/teleantioquia.m3u8')">Teleantioquia</button>
-    <button onclick="cambiarCanal('https://stream.telepacifico.com/live/telepacifico.m3u8')">Telepacífico</button>
+  <div class="canal">
+    <a class="boton" href="https://d2p372oxiwmcn1.cloudfront.net/out/v1/3e61ad13f7a046e79f7b9d6306d2a2e3/index.m3u8" target="_blank">Caracol TV</a>
   </div>
 
-  <script>
-    function cambiarCanal(url) {
-      const video = document.getElementById("tv");
-      const source = document.getElementById("tvSource");
-      source.src = url;
-      video.load();
-      video.play();
-    }
-  </script>
+  <div class="canal">
+    <a class="boton" href="https://rcntv-rcntv-live-1.lcdn.une.net.co/RCNTV/rcntv_live/playlist.m3u8" target="_blank">RCN TV</a>
+  </div>
+
+  <div class="canal">
+    <a class="boton" href="https://stmv1.voxtvhd.com.br/telesentinel/telesentinel/playlist.m3u8" target="_blank">Canal 1</a>
+  </div>
+
+  <div class="canal">
+    <a class="boton" href="https://stmv1.voxtvhd.com.br/telecaribe/telecaribe/playlist.m3u8" target="_blank">Telecaribe</a>
+  </div>
+
+  <div class="canal">
+    <a class="boton" href="https://streamyes.alsolnet.com/hls/eltubo.m3u8" target="_blank">El TUBO</a>
+  </div>
+
+  <p style="margin-top: 40px;">Puedes agregar más canales copiando el formato arriba ↑</p>
 </body>
 </html>
+
 
