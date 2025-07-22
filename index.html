@@ -3,61 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Canales de Colombia - IPTV</title>
+  <title>📺 Mancha Digital TV - Canales en Vivo</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #121212;
+      background: linear-gradient(to bottom, #001f3f, #003366);
       color: white;
-      text-align: center;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
     }
     h1 {
-      color: #00ff99;
+      color: #00ffff;
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
-    .canal {
-      margin: 10px;
+    p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #ccc;
     }
-    a.boton {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
+    video {
+      width: 90%;
+      max-width: 800px;
+      margin-top: 20px;
+      border: 4px solid #00ffff;
+      border-radius: 12px;
+    }
+    .canales {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .canales button {
+      background-color: #008080;
       color: white;
-      background-color: #1e90ff;
-      text-decoration: none;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
       border-radius: 8px;
-      transition: background 0.3s;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    a.boton:hover {
-      background-color: #0074cc;
+    .canales button:hover {
+      background-color: #00cccc;
     }
   </style>
 </head>
 <body>
-  <h1>📺 Canales Colombianos IPTV</h1>
 
-  <div class="canal">
-    <a class="boton" href="https://d2p372oxiwmcn1.cloudfront.net/out/v1/3e61ad13f7a046e79f7b9d6306d2a2e3/index.m3u8" target="_blank">Caracol TV</a>
+  <h1>📡 Mancha Digital TV</h1>
+  <p>Disfruta de canales colombianos en vivo. Dale clic a un canal para comenzar.</p>
+
+  <!-- Reproductor de video -->
+  <video id="tv" controls autoplay></video>
+
+  <!-- Botones de canales -->
+  <div class="canales">
+    <button onclick="cargar('https://d2p372oxiwmcn1.cloudfront.net/out/v1/3e61ad13f7a046e79f7b9d6306d2a2e3/index.m3u8')">Caracol TV</button>
+    <button onclick="cargar('https://rcntv-rcntv-live-1.lcdn.une.net.co/RCNTV/rcntv_live/playlist.m3u8')">RCN TV</button>
+    <button onclick="cargar('https://stmv1.voxtvhd.com.br/telesentinel/telesentinel/playlist.m3u8')">Canal 1</button>
+    <button onclick="cargar('https://stmv1.voxtvhd.com.br/telecaribe/telecaribe/playlist.m3u8')">Telecaribe</button>
   </div>
 
-  <div class="canal">
-    <a class="boton" href="https://rcntv-rcntv-live-1.lcdn.une.net.co/RCNTV/rcntv_live/playlist.m3u8" target="_blank">RCN TV</a>
-  </div>
+  <!-- Script para reproducir canales -->
+  <script>
+    const tv = document.getElementById('tv');
+    function cargar(url) {
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(tv);
+      } else if (tv.canPlayType('application/vnd.apple.mpegurl')) {
+        tv.src = url;
+      } else {
+        alert('Tu navegador no soporta reproducción de video HLS');
+      }
+    }
+  </script>
 
-  <div class="canal">
-    <a class="boton" href="https://stmv1.voxtvhd.com.br/telesentinel/telesentinel/playlist.m3u8" target="_blank">Canal 1</a>
-  </div>
-
-  <div class="canal">
-    <a class="boton" href="https://stmv1.voxtvhd.com.br/telecaribe/telecaribe/playlist.m3u8" target="_blank">Telecaribe</a>
-  </div>
-
-  <div class="canal">
-    <a class="boton" href="https://streamyes.alsolnet.com/hls/eltubo.m3u8" target="_blank">El TUBO</a>
-  </div>
-
-  <p style="margin-top: 40px;">Puedes agregar más canales copiando el formato arriba ↑</p>
 </body>
 </html>
-
-
